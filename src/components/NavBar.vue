@@ -1,9 +1,9 @@
 <template>
   <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
     <div class="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-8 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
+      <div class="flex h-8 items-center justify-between">
+        <!-- Mobile menu button-->
+        <div class="flex items-center sm:hidden">
           <DisclosureButton
             class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           >
@@ -12,10 +12,10 @@
             <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
           </DisclosureButton>
         </div>
-        <div
-          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-        >
-          <div class="flex flex-shrink-0 items-center">
+
+        <!-- Logo and Navigation buttons -->
+        <div class="flex items-center justify-center sm:justify-start">
+          <div class="flex flex-shrink-0 items-center hidden sm:ml-6 sm:block">
             <img
               class="block h-9 w-auto lg:hidden rounded-lg"
               src="@/assets/images/souls.jpeg"
@@ -39,8 +39,28 @@
             </div>
           </div>
         </div>
+
+        <!-- Search -->
+        <div class="flex flex-1 items-center justify-center px-2 lg:ml-6">
+          <div class="max-w-lg w-full lg:max-w-xs">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative text-gray-400 focus-within:text-gray-600">
+              <!-- <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                icon search
+              </div> -->
+              <input
+                id="search"
+                class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-900 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out"
+                placeholder="Search"
+                type="search"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin -->
         <div
-          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          class="flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">
@@ -112,7 +132,6 @@
           as="a"
           :href="item.path"
           class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-4 py-2 text-base font-medium"
-          
           >{{ item.name }}</DisclosureButton
         >
       </div>
@@ -131,6 +150,5 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { routes } from "@/router"
-
+import { routes } from "@/router";
 </script>
